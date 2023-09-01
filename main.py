@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #_*_ codig: utf8 _*_
-import psycopg2, time, json, re
+import psycopg2, time, json, re, os
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 from modules.constants import *
@@ -78,7 +78,7 @@ if __name__ == '__main__':
             print(dict_str)
             cdndb_cur.execute('DELETE FROM vtrdata;')
             cdndb_connect.commit()
-            #os.remove(log_path)
+            os.remove(log_path)
             dict_summary_str=json.dumps(dict_summary, sort_keys=False, indent=4)
             print(dict_summary_str)
             print_log(dict_summary_str)
