@@ -9,11 +9,11 @@ from modules.functions import *
 if __name__ == '__main__':
     try:
         dict_summary={}
-        input("ingrese file path: ")
         log_path=input("ingrese file path: ")
         df=pd.read_csv(log_path, delimiter=',', low_memory=False)
         quantity=df.shape[0]
-        df=df.drop(['title', 'serietitle', 'duration'], axis='columns')
+        df=df.drop(['TITULO', 'TITULO_lower', 'DURATION'], axis='columns')
+        df=df.rename(columns={df.columns['IDEN_VIVIENDA']: 'clientid', df.columns['ID_FECH_COMPRA']: 'datetime', df.columns['View_Minutos']: 'segduration', df.columns['DURATION']: 'duration', df.columns['ExternalID']: 'contentid'})
         df['device']='N/A'
         df['country']='CL'
         df['datetime']=df['datetime'].apply(lambda x: re.sub(r"\.[^.]*$", "", x))
