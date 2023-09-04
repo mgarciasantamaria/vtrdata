@@ -13,7 +13,7 @@ if __name__ == '__main__':
         df=pd.read_csv(log_path, delimiter=',', low_memory=False)
         quantity=df.shape[0]
         df=df.drop(['TITULO', 'TITULO_lower', 'DURATION'], axis='columns')
-        df=df.rename(columns={'IDEN_VIVIENDA': 'clientid', 'ID_FECH_COMPRA': 'datetime', 'View_Minutos': 'segduration', 'DURATION': 'duration', 'ExternalID': 'contentid'}, inplace=True)
+        df.rename(columns={'IDEN_VIVIENDA': 'clientid', 'ID_FECH_COMPRA': 'datetime', 'View_Minutos': 'segduration', 'DURATION': 'duration', 'ExternalID': 'contentid'}, inplace=True)
         df['device']='N/A'
         df['country']='CL'
         df['datetime']=df['datetime'].apply(lambda x: re.sub(r"\.[^.]*$", "", x))
