@@ -34,6 +34,8 @@ if __name__ == '__main__':
                 dict_summary['Delete_Playbacks']=cdndb_cur.rowcount
                 cdndb_connect.commit()
         else:
+            dict_summary[log_path]=({'extract_xml_data': 0})
+            dict_summary['Delete_Playbacks']=0
             pass 
         sql="""INSERT INTO playbacks
         SELECT 
